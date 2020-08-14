@@ -29,6 +29,23 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+# keep templates anywhere in the system
+# $ python -c "import django; print(django.__path__)" to check django files in youyr system 
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 INSTALLED_APPS = [
     'polls.apps.PollsConfig', #adding class pollsconfig from app.py in polls  to installed apps
